@@ -6,7 +6,11 @@
 <title>Catelon Mars | Launching on Pump.fun</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://terminal.jup.ag/main-v3.js" defer></script>
 <style>
+    /* Smooth Scroll for the Terminal Link */
+    html { scroll-behavior: smooth; }
+
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron', sans-serif;color:white}
     body{ overflow-x:hidden; background-color: #0d0202; }
 
@@ -52,6 +56,18 @@
     .card h3 { color: #ff6b00; margin-bottom: 15px; font-size: 22px; }
     .card p { font-family: 'Space Grotesk', sans-serif; color: #ccc; line-height: 1.7; font-size: 15px; }
 
+    /* Terminal Styling */
+    #terminal-section { display: flex; flex-direction: column; align-items: center; padding-bottom: 100px; }
+    #integrated-terminal {
+        width: 100%; max-width: 440px; min-height: 600px;
+        background: rgba(15, 5, 5, 0.95);
+        border: 1px solid rgba(255, 69, 0, 0.4);
+        border-radius: 28px;
+        box-shadow: 0 0 80px rgba(255, 69, 0, 0.15);
+        overflow: hidden;
+        backdrop-filter: blur(20px);
+    }
+
     @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
 
     footer{text-align:center; padding:80px; color:#666; border-top: 1px solid rgba(255,69,0,0.1); font-size: 11px; letter-spacing: 2px;}
@@ -66,7 +82,7 @@
     <div>
         <a href="#about">THE LORE</a>
         <a href="#roadmap">MARS-MAP</a>
-        <a href="#socials">FLEET</a>
+        <a href="#terminal-section">TERMINAL</a>
         <a href="https://x.com/cateloncoin" style="margin-left: 20px;"><img src="https://cdn.simpleicons.org/x/ffffff" alt="X" style="width: 20px; height: 20px;"></a>
         <a href="https://t.me/catelonmars"><img src="https://cdn.simpleicons.org/telegram/ffffff" alt="Telegram" style="width: 20px; height: 20px;"></a>
         <a href="https://pump.fun"><img src="https://pump.fun/favicon.ico" alt="Pump.fun" style="width: 20px; height: 20px;"></a>
@@ -109,7 +125,7 @@
             <h3>Phase 2: Atmosphere Exit</h3>
             <p>• Hit the Bonding Curve<br>• PumpSwap Graduation<br>• Viral memes that make Alon proud</p>
         </div>
-        <div class="card">
+        <div class="card : Phase 3">
             <h3>Phase 3: Deep Space</h3>
             <p>• Catelon Trading Bot (Beta)<br>• Holder-Only "Dust Drops"<br>• Strategic Alliances with Space Whales</p>
         </div>
@@ -120,17 +136,45 @@
     </div>
 </section>
 
+<section id="terminal-section">
+    <h2 style="margin-bottom: 20px;">THE MARTIAN TERMINAL</h2>
+    <p style="text-align:center; color:#888; font-family:'Space Grotesk'; margin-bottom: 40px; text-transform:uppercase; letter-spacing:1px;">Universal Swap Portal for Early Colonists</p>
+    <div id="integrated-terminal"></div>
+    <p style="margin-top: 30px; font-size: 10px; color: #444; letter-spacing: 2px;">POWERED BY JUPITER V6 PROTOCOL • 1% FEE TO MARKETING</p>
+</section>
+
 <footer id="socials">
     <p>© 2026 CATELON MARS • AD ASTRA PER ASPERA • DON'T BLINK, HOLD $CATELON</p>
 </footer>
 
 <script>
 window.onload=function(){
+    // CONFIGURATION - UPDATE THESE
+    const MARKETING_WALLET = "7AQiZBXSEYAee6NCisWeowRx4bTKJPHyvxHYmVhWfgYd"; 
+    const HELIUS_RPC = "https://mainnet.helius-rpc.com/?api-key=f8262116-60c4-4baf-bb63-e87dfe97e8b0";
+
     const sections=document.querySelectorAll("section");
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("show"); });
     }, { threshold: 0.1 });
     sections.forEach(sec => observer.observe(sec));
+
+    // JUPITER TERMINAL INITIALIZATION
+    if (window.Jupiter) {
+        window.Jupiter.init({
+            displayMode: "integrated",
+            integratedTargetId: "integrated-terminal",
+            endpoint: HELIUS_RPC,
+            strictTokenList: false,
+            formProps: { fixedInputMint: false, fixedOutputMint: false },
+            platformFeeBps: 100, // 1%
+            feeAccounts: new Map([["SOL", MARKETING_WALLET]]),
+            theme: {
+                palette: { primary: "#ff6b00", background: "#0d0202", text: "#ffffff" },
+                shape: { borderRadius: "20px" }
+            }
+        });
+    }
 
     const scene=new THREE.Scene();
     const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,2000);
