@@ -165,8 +165,12 @@ window.onload=function(){
             displayMode: "integrated",
             integratedTargetId: "integrated-terminal",
             endpoint: HELIUS_RPC,
-            strictTokenList: false,
-            formProps: { fixedInputMint: false, fixedOutputMint: false },
+            strictTokenList: true, // Prioritize verified tokens (SOL, USDC, USDT)
+            formProps: {
+                initialInputMint: "So11111111111111111111111111111111111111112", // Native SOL as default
+                fixedInputMint: false,
+                fixedOutputMint: false,
+            },
             platformFeeBps: 100, // 1%
             feeAccounts: new Map([["SOL", MARKETING_WALLET]]),
             theme: {
