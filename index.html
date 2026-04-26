@@ -33,6 +33,7 @@
     nav a:hover{color: #ff6b00;}
 
     .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center; padding: 0 10%;}
+    .hero-img { width: 220px; margin-bottom: 20px; animation: float 3s infinite ease-in-out; filter: drop-shadow(0 0 30px rgba(255,107,0,0.5)); }
     .hero h1{font-size: clamp(35px, 8vw, 85px); background: linear-gradient(to bottom, #ffffff 40%, #ff4500 100%);-webkit-background-clip:text;color:transparent; letter-spacing: 6px;}
     .hero p { max-width: 800px; font-family: 'Space Grotesk'; font-size: 1.2rem; color: #dfdfdf; margin-top: 15px; }
 
@@ -64,6 +65,7 @@
     }
 
     footer{text-align:center; padding:80px; color:#666; border-top: 1px solid rgba(255,69,0,0.1); font-size: 11px; letter-spacing: 2px;}
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
 </style>
 </head>
 <body>
@@ -80,7 +82,7 @@
 </nav>
 
 <div class="hero">
-    <img src="logo.png" style="width: 220px; margin-bottom: 20px;">
+    <img src="logo.png" class="hero-img">
     <h1>CATELON MARS</h1>
     <p>Launched on Pump.fun. The mission to the red unknown has begun. No paper paws allowed.</p>
     <a href="#terminal-section" class="buy-btn">ACCESS TERMINAL</a>
@@ -115,10 +117,10 @@
 </section>
 
 <section id="terminal-section">
-    <h2 style="margin-bottom: 20px;">SWAP ENGINE</h2>
-    <p style="text-align:center; color:#888; font-family:'Space Grotesk'; margin-bottom: 40px; text-transform:uppercase; letter-spacing:1px;">Supports Pump.fun & PumpSwap Liquidity</p>
+    <h2 style="margin-bottom: 20px;">MARS SWAP ENGINE</h2>
+    <p style="text-align:center; color:#888; font-family:'Space Grotesk'; margin-bottom: 40px; text-transform:uppercase; letter-spacing:1px;">Supports Pump.fun Bonding Curve & PumpSwap AMM</p>
     <div id="integrated-terminal"></div>
-    <p style="margin-top: 30px; font-size: 10px; color: #444; letter-spacing: 2px;">AUTOMATIC PUMPSWAP ROUTING ENABLED</p>
+    <p style="margin-top: 30px; font-size: 10px; color: #444; letter-spacing: 2px;">AUTOMATIC PUMPSWAP ROUTING ENABLED • 1% FEE TO MARKETING</p>
 </section>
 
 <footer>
@@ -128,21 +130,21 @@
 <script>
 window.onload = function() {
     const MARKETING_WALLET = "7AQiZBXSEYAee6NCisWeowRx4bTKJPHyvxHYmVhWfgYd"; 
-    // Using a reliable Helius RPC for the terminal connection
     const HELIUS_RPC = "https://beta.helius-rpc.com/?api-key=f8262116-60c4-4baf-bb63-e87dfe97e8b0";
 
+    // NEW CONFIG: Bypasses legacy price APIs to avoid CORS errors
     if (window.Jupiter) {
         window.Jupiter.init({
             displayMode: "integrated",
             integratedTargetId: "integrated-terminal",
             endpoint: HELIUS_RPC,
-            strictTokenList: false, // CRITICAL: This allows it to see Pump.fun tokens immediately
-            enableApiV6: true,      // Best for modern Solana DEX routing
+            strictTokenList: false, 
+            enableApiV6: true, // Forces usage of the new Metis engine (supports PumpSwap)
+            useUserSlippage: true,
             formProps: {
-                initialInputMint: "So11111111111111111111111111111111111111112", // SOL
+                initialInputMint: "So11111111111111111111111111111111111111112", 
                 fixedInputMint: false,
             },
-            // 1% Marketing Fee
             platformFeeBps: 100, 
             feeAccounts: new Map([["SOL", MARKETING_WALLET]]),
             theme: {
