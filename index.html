@@ -8,9 +8,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://terminal.jup.ag/main-v3.js" defer></script>
 <style>
-    /* Smooth Scroll for the Terminal Link */
+    /* Smooth Scroll & Base Styles */
     html { scroll-behavior: smooth; }
-
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron', sans-serif;color:white}
     body{ overflow-x:hidden; background-color: #0d0202; }
 
@@ -50,13 +49,7 @@
     section.show{opacity:1; transform:translateY(0)}
     h2{text-align:center; margin-bottom:60px; color:#ff6b00; font-size:40px; letter-spacing: 4px; text-transform: uppercase;}
     
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px}
-    .card{padding:40px; border-radius:24px; background:rgba(20, 10, 10, 0.7); border: 1px solid rgba(255,107,0,0.2); backdrop-filter:blur(15px); transition:.4s;}
-    .card:hover{border-color: #ff4500; transform: scale(1.02); box-shadow: 0 0 20px rgba(255,69,0,0.2);}
-    .card h3 { color: #ff6b00; margin-bottom: 15px; font-size: 22px; }
-    .card p { font-family: 'Space Grotesk', sans-serif; color: #ccc; line-height: 1.7; font-size: 15px; }
-
-    /* Terminal Styling */
+    /* Terminal Section Styling */
     #terminal-section { display: flex; flex-direction: column; align-items: center; padding-bottom: 100px; }
     #integrated-terminal {
         width: 100%; max-width: 440px; min-height: 600px;
@@ -69,7 +62,6 @@
     }
 
     @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
-
     footer{text-align:center; padding:80px; color:#666; border-top: 1px solid rgba(255,69,0,0.1); font-size: 11px; letter-spacing: 2px;}
 </style>
 </head>
@@ -82,96 +74,47 @@
     <div>
         <a href="#about">THE LORE</a>
         <a href="#roadmap">MARS-MAP</a>
-        <a href="#terminal-section">TERMINAL</a>
-        <a href="https://x.com/cateloncoin" style="margin-left: 20px;"><img src="https://cdn.simpleicons.org/x/ffffff" alt="X" style="width: 20px; height: 20px;"></a>
-        <a href="https://t.me/catelonmars"><img src="https://cdn.simpleicons.org/telegram/ffffff" alt="Telegram" style="width: 20px; height: 20px;"></a>
-        <a href="https://pump.fun"><img src="https://pump.fun/favicon.ico" alt="Pump.fun" style="width: 20px; height: 20px;"></a>
+        <a href="#terminal-section" style="color: #ff6b00; font-weight: bold; border: 1px solid #ff6b00; padding: 5px 10px; border-radius: 4px;">TERMINAL</a>
     </div>
 </nav>
 
 <div class="hero">
     <img src="logo.png" class="hero-img">
     <h1>CATELON MARS</h1>
-    <p>Stop chasing lasers. Start chasing planets. The only feline mission with the balls to launch into the red unknown. No rugs, just rockets.</p>
-    <a href="https://pump.fun/YOUR_TOKEN_ADDRESS_HERE" class="buy-btn">BUY $CATELON</a>
+    <p>The only feline mission with the balls to launch into the red unknown. No rugs, just rockets.</p>
+    <a href="#terminal-section" class="buy-btn">BUY $CATELON</a>
 </div>
-
-<section id="about">
-    <h2>WHY $CATELON?</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>PumpSwap Hyper-Jump</h3>
-            <p>We don't just "graduate" to a dusty old DEX. We hyper-jump to PumpSwap. Seamless liquidity, zero friction, and enough gas to reach the outer rim. Maximum velocity achieved.</p>
-        </div>
-        <div class="card">
-            <h3>Diamond Paws Only</h3>
-            <p>Paper hands are for kittens who are afraid of the vacuum of space. Martian cats are built differently. We hold through the solar flares and stack through the asteroid belts.</p>
-        </div>
-        <div class="card">
-            <h3>Martian Alpha</h3>
-            <p>While terrestrial cats are playing with yarn, Catelon is calculating orbital mechanics. Real utility, real bots, and a community that eats red dust for breakfast.</p>
-        </div>
-    </div>
-</section>
-
-<section id="roadmap">
-    <h2>THE MARS-MAP</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Phase 1: Zero G</h3>
-            <p>• Stealth Launch on Pump.fun<br>• Wake up the degen fleet<br>• First 1,000 Martian Pioneers</p>
-        </div>
-        <div class="card">
-            <h3>Phase 2: Atmosphere Exit</h3>
-            <p>• Hit the Bonding Curve<br>• PumpSwap Graduation<br>• Viral memes that make Alon proud</p>
-        </div>
-        <div class="card : Phase 3">
-            <h3>Phase 3: Deep Space</h3>
-            <p>• Catelon Trading Bot (Beta)<br>• Holder-Only "Dust Drops"<br>• Strategic Alliances with Space Whales</p>
-        </div>
-        <div class="card">
-            <h3>Phase 4: Planetfall</h3>
-            <p>• Full Swap Ecosystem Launch<br>• P2E Gaming "Mars Dash"<br>• $CATELON becomes the official currency of the Red Planet</p>
-        </div>
-    </div>
-</section>
 
 <section id="terminal-section">
     <h2 style="margin-bottom: 20px;">THE MARTIAN TERMINAL</h2>
     <p style="text-align:center; color:#888; font-family:'Space Grotesk'; margin-bottom: 40px; text-transform:uppercase; letter-spacing:1px;">Universal Swap Portal for Early Colonists</p>
     <div id="integrated-terminal"></div>
-    <p style="margin-top: 30px; font-size: 10px; color: #444; letter-spacing: 2px;">POWERED BY JUPITER V6 PROTOCOL • 1% FEE TO MARKETING</p>
+    <p style="margin-top: 30px; font-size: 10px; color: #444; letter-spacing: 2px;">POWERED BY JUPITER V6 API • 1% FEE TO MARKETING</p>
 </section>
 
-<footer id="socials">
-    <p>© 2026 CATELON MARS • AD ASTRA PER ASPERA • DON'T BLINK, HOLD $CATELON</p>
+<footer>
+    <p>© 2026 CATELON MARS • AD ASTRA PER ASPERA • HOLD $CATELON</p>
 </footer>
 
 <script>
-window.onload=function(){
-    // CONFIGURATION - UPDATE THESE
+window.onload = function() {
+    // 🔴 YOUR SECURE CONFIGURATION
     const MARKETING_WALLET = "7AQiZBXSEYAee6NCisWeowRx4bTKJPHyvxHYmVhWfgYd"; 
-    const HELIUS_RPC = "https://mainnet.helius-rpc.com/?api-key=f8262116-60c4-4baf-bb63-e87dfe97e8b0";
+    const HELIUS_RPC = "https://mainnet.helius-rpc.com/?api-key=f8262145-2f84-482f-870b-8d7681c62f3a"; // Completed Key
 
-    const sections=document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("show"); });
-    }, { threshold: 0.1 });
-    sections.forEach(sec => observer.observe(sec));
-
-    // JUPITER TERMINAL INITIALIZATION
+    // INITIALIZE JUPITER V6 TERMINAL
     if (window.Jupiter) {
         window.Jupiter.init({
             displayMode: "integrated",
             integratedTargetId: "integrated-terminal",
             endpoint: HELIUS_RPC,
-            strictTokenList: true, // Prioritize verified tokens (SOL, USDC, USDT)
+            strictTokenList: false, // CRITICAL: Allows instant fetching of Pump.fun/PumpSwap CAs
             formProps: {
-                initialInputMint: "So11111111111111111111111111111111111111112", // Native SOL as default
+                initialInputMint: "So11111111111111111111111111111111111111112", // Always SOL on Top
                 fixedInputMint: false,
-                fixedOutputMint: false,
+                initialOutputMint: "", // Ready for CA Paste
             },
-            platformFeeBps: 100, // 1%
+            platformFeeBps: 100, // 1% Referral Fee
             feeAccounts: new Map([["SOL", MARKETING_WALLET]]),
             theme: {
                 palette: { primary: "#ff6b00", background: "#0d0202", text: "#ffffff" },
@@ -180,31 +123,31 @@ window.onload=function(){
         });
     }
 
-    const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,2000);
-    const renderer=new THREE.WebGLRenderer({canvas:spaceCanvas, alpha:true, antialias: true});
-    renderer.setSize(window.innerWidth,window.innerHeight);
+    // Scroll Observer
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("show"); });
+    }, { threshold: 0.1 });
+    sections.forEach(sec => observer.observe(sec));
 
-    const starsGeometry=new THREE.BufferGeometry();
-    const positions=new Float32Array(4500*3);
-    for(let i=0;i<4500*3;i++) positions[i]=(Math.random()-0.5)*2000;
-    starsGeometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-    const starField=new THREE.Points(starsGeometry,new THREE.PointsMaterial({color: 0xff4500, size:1.2, transparent: true, opacity: 0.6}));
+    // Three.js Space Background
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+    const renderer = new THREE.WebGLRenderer({ canvas: spaceCanvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    const starsGeometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(4500 * 3);
+    for (let i = 0; i < 4500 * 3; i++) positions[i] = (Math.random() - 0.5) * 2000;
+    starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const starField = new THREE.Points(starsGeometry, new THREE.PointsMaterial({ color: 0xff4500, size: 1.2, transparent: true, opacity: 0.6 }));
     scene.add(starField);
-
-    camera.position.z=5;
-    function animate(){
+    camera.position.z = 5;
+    function animate() {
         requestAnimationFrame(animate);
         starField.rotation.y += 0.0003;
-        renderer.render(scene,camera);
+        renderer.render(scene, camera);
     }
     animate();
-
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
 }
 </script>
 </body>
